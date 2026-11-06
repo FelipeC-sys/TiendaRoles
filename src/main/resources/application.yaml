@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: tienda
+  datasource:
+    url: ${DB_URL:jdbc:mysql://localhost:3306/tienda_db}
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD:}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: ${DB_DIALECT:org.hibernate.dialect.MariaDBDialect}
+server:
+  port: 9090
+  servlet:
+    context-path: /api/v1/tienda # Ruta de contexto de todo el proyecto
+security:
+  jwt:
+    secret-key: ${JWT_SECRET_KEY} # Genera con: openssl rand -base64 32
+    token-expiration: ${JWT_EXPIRATION:600000} # 10 min expresado en milisegundos
